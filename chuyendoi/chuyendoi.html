@@ -1,31 +1,34 @@
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>feetmeter</title>
 </head>
 <body>
-<p>Nhập feet:</p>
-<label><input type="text" id="feet"></label>
-<button onclick="check1()">check1</button>
-<p id="result1"></p><br>
-<p>Nhập meter:</p>
-<label><input type="text" id="meter"></label>
-<button onclick="check2()">check2</button>
-<p id="result2"></p>
-
-</body>
+<h2>Nhập số:</h2>
+<label><input type="text" id="number"></label>
+<label for="num">Chọn đơn vị:</label>
+<select id="num">
+  <option value="f">feet</option>
+  <option value="m">meter</option>
+</select>
+<button onclick="convert()">Chuyển đổi</button>
+<p id="result"></p>
 <script>
-  function check1() {
-    let f = parseFloat(document.getElementById('feet').value);
-    let meter = f * 0.305;
-    document.getElementById('result1').innerHTML = meter.toFixed(2) + " mét";
-  }
-
-  function check2() {
-    let m = parseFloat(document.getElementById('meter').value);
-    let foot = m * 3.279;
-    document.getElementById('result2').innerHTML = foot.toFixed(2) + " feet";
+  function convert() {
+    let number = parseFloat(document.getElementById('number').value);
+    let unit = document.getElementById('num').value;
+    let result = '';
+    if (unit === 'f') {
+      let meter = number * 0.305;
+      result = meter.toFixed(2) + " meter";
+    } else if (unit === 'm') {
+      let foot = number * 3.279;
+      result = foot.toFixed(2) + " feet";
+    }
+    document.getElementById('result').innerHTML = result;
   }
 </script>
+
+</body>
 </html>
